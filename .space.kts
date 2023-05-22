@@ -5,10 +5,13 @@
 */
 
 job("Build and run tests") {
-    
+    startOn {
+        gitPush { enabled = true }
+        schedule { cron("0 */1 * * *") } 
+    }
     parallel {
 		
-        sequential {
+        
            container(displayName = "test", image = "ubuntu") {
              	resources {
                     cpu = 4.cpu
@@ -61,7 +64,163 @@ job("Build and run tests") {
                     """
                 }
             }
-       }
+           	container(displayName = "test", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "build", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "deploy", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "finishing", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           	container(displayName = "test", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "build", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "deploy", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "finishing", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           	container(displayName = "test", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "build", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "deploy", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+           container(displayName = "finishing", image = "ubuntu") {
+             	resources {
+                    cpu = 4.cpu
+                    memory = 4000.mb
+                }
+
+                shellScript {
+                    content = """
+                    	apt update -y && apt install -y python3 python3-pip curl wget
+                        pip install -r requirements.txt && python3 app.py
+                    """
+                }
+            }
+       
       }
 }
 
