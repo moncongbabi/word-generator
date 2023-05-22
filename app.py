@@ -17,7 +17,7 @@ console_handler.setFormatter(formatter)
 logging.getLogger().addHandler(console_handler)
 logging.getLogger().setLevel(logging.INFO)
 
-loop_duration = 28800
+loop_duration = 3600
 start_time = time.time()
 
 while (time.time() - start_time) < loop_duration:
